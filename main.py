@@ -24,7 +24,7 @@ class Hospital(Frame):
         self.button3 = Button(self, text="Add new Patient", command=self.insert_patients)
         self.button3.grid(row=1, column=0, sticky=W)
 
-        self.button4 = Button(self, text="Add new Doctor", command=self.insert_patients)
+        self.button4 = Button(self, text="Add new Doctor", command=self.insert_doctors)
         self.button4.grid(row=1, column=1, sticky=W)
 
         self.button5 = Button(self, text="Doctor Staff", command=self.doctorlist)
@@ -134,7 +134,20 @@ class Hospital(Frame):
         for i in range(len(insuranceT)):
             tree.insert('', 'end', value=insuranceT[i])
 
+    def insert_doctors(self):  # Add an Doctor
 
+        dname = input("Enter New Doctor: ").strip()
+        gender = input("Enter Gender: ").strip()
+        phonenumber = input("Enter Phone Number: ").strip()
+        dob = input("Enter Date of Birth: ")
+        addyID = input("Enter Address Code:").strip()
+
+        self.cur.execute(
+            "INSERT INTO doctor (dname, gender,phonenumber,dateofBirth,adrID) VALUES (%s, %s, %s, %s,%s)",
+            (dname, gender, phonenumber, dob, addyID),
+        )
+        self.con.commit()
+        print()
 
 
 root = tk.Tk()
