@@ -15,33 +15,33 @@ class Hospital(Frame):
         zip = StringVar()
 
     def create_widgets(self):
-        self.button = Button(self, text="Open Database", fg="green", command=self.begin)
+        self.button = Button(self, text="Open Database", fg="green", command=self.begin, height = 2, width = 25)
         self.button.grid(row=0, column=0, sticky=W)
 
-        self.button2 = Button(self, text="Close Connection", fg="red", command=self.closed)
+        self.button2 = Button(self, text="Close Connection", fg="red", command=self.closed, height = 2, width = 25)
         self.button2.grid(row=0, column=1, sticky=W)
 
-        self.button3 = Button(self, text="Add new Patient", command=self.insert_patients)
+        self.button3 = Button(self, text="Add new Patient", command=self.insert_patients, height = 2, width = 25)
         self.button3.grid(row=1, column=0, sticky=W)
 
-        self.button4 = Button(self, text="Add new Doctor", command=self.insert_doctors)
-        self.button4.grid(row=1, column=1, sticky=W)
+        self.button4 = Button(self, text="Doctor Staff", command=self.doctorlist, height = 2, width = 25)
+        self.button4.grid(row=2, column=1, sticky=W)
 
-        self.button5 = Button(self, text="Doctor Staff", command=self.doctorlist)
-        self.button5.grid(row=2, column=0, sticky=W)
+        self.button5 = Button(self, text="All patients", command=self.patientlist, height = 2, width = 25)
+        self.button5.grid(row=1, column=1, sticky=W)
 
-        self.button6 = Button(self, text="All patients", command=self.patientlist)
-        self.button6.grid(row=2, column=1, sticky=W)
-
-        self.button6 = Button(self, text="Show City Location", command=self.insurancelist)
+        self.button6 = Button(self, text="Show City Location", command=self.insurancelist, height = 2, width = 25)
         self.button6.grid(row=3, column=0, sticky=W)
 
-        self.button6 = Button(self, text="Show Patients Doctor", command=self.patientlist)
-        self.button6.grid(row=3, column=1, sticky=W)
+        self.button7 = Button(self, text="Delete Patients", command=self.delete_patients, height = 2, width = 25)
+        self.button7.grid(row=2, column=0, sticky=W)
+
+        self.button8 = Button(self, text="Update Patients' information", command=self.update_patients, height = 2, width = 25)
+        self.button8.grid(row=3, column=1, sticky=W)
 
     def begin(self):
         # Establish a MySQL connection
-        self.con = pymysql.connect(host='127.0.0.1', port=3306, user='root', password='DbTest123',
+        self.con = pymysql.connect(host='127.0.0.1', port=3306, user='root', password='Caomeibbt520.',
                                    database='hdbms')
         # Get the cursor to traverse the database, line by line
         self.cur = self.con.cursor()
@@ -58,7 +58,7 @@ class Hospital(Frame):
         p1.geometry('500x500')
         p1.title("Patient currently enrolled")
 
-        columns = ('Patient Name', 'Gender', 'Date of Birth', 'Phone Number',)  # Tree View Setup
+        columns = ('Patient Name', 'Gender', 'Phone Number', 'Date of Birth')  # Tree View Setup
         tree = ttk.Treeview(p1, height=20, columns=columns, show='headings')
         tree.grid(row=0, column=0, sticky='news')
 
@@ -149,6 +149,28 @@ class Hospital(Frame):
         self.con.commit()
         print()
 
+    def delete_patients(self):  # delete a Patient
+
+        pname = input("Enter the patients' name that you want to delete:").strip()
+
+        self.cur.execute(
+            "DELETE FROM Patients WHERE pname = '%s'" % (pname)
+        )
+        self.con.commit()
+        print()
+        return
+
+    def update_patients(self):  # update information
+
+        old_info = input("Enter the patient's old phone number: ").strip()
+        update_info = input("Enter the patient's new phone number: ").strip()
+
+        self.cur.execute(
+            "UPDATE patients SET phonenumber =  '%s' WHERE phonenumber = '%s'" % (update_info, old_info)
+        )
+        self.con.commit()
+        print()
+        return
 
 root = tk.Tk()
 root.title("Hospital Database Management")
