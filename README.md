@@ -6,10 +6,8 @@ Untitled Hospital Application using Python, and MySQL.
 
 * requirements
   * Python 3
+  * pymysql
+  * tkinter
    * MySQL
-
-## Data Sources
-
-
-
-## E-R Diagram
+    *Database File 
+   
