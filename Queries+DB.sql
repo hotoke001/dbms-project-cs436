@@ -127,3 +127,5 @@ ON patients.adrID = doctor.adrID;
 
 select pName from patients
 where adrID in (select adrID from doctor where gender = 'Male');
+
+CREATE INDEX insurance ON patients (pname);
