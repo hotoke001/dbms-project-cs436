@@ -14,7 +14,7 @@ class Hospital(Frame):
         self.master = master
         zip = StringVar()
 
-    def create_widgets(self):
+    def create_widgets(self): #Option Box Creation
         self.button = Button(self, text="Open Database", fg="green", command=self.begin, height = 2, width = 25)
         self.button.grid(row=0, column=0, sticky=W)
 
@@ -53,7 +53,7 @@ class Hospital(Frame):
 
     # Close MySQL Connections
 
-    def patientlist(self):
+    def patientlist(self): # Query and show results
         p1 = tk.Toplevel(root)
         p1.geometry('500x500')
         p1.title("Patient currently enrolled")
@@ -89,10 +89,10 @@ class Hospital(Frame):
             (pname, gender, phonenumber, dob, addyID),
         )
         self.con.commit()
-        print()
+        print() #Debug print
         return
 
-    def doctorlist(self):
+    def doctorlist(self): #Doctor Query
         p2 = tk.Toplevel(root)
         p2.geometry('500x500')
         p2.title("Doctors currently enrolled")
@@ -113,7 +113,7 @@ class Hospital(Frame):
             tree.insert('', 'end', value=doctorstreeT[i])
 
 
-    def insurancelist(self):
+    def insurancelist(self): #Insurance Query
         p1 = tk.Toplevel(root)
         p1.geometry('500x500')
         p1.title("Current Hospital network Buildings")
