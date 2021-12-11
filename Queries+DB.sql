@@ -128,4 +128,8 @@ ON patients.adrID = doctor.adrID;
 select pName from patients
 where adrID in (select adrID from doctor where gender = 'Male');
 
-CREATE INDEX insurance ON patients (pname);
+create index insurance on patients (pname);
+SHOW INDEX FROM insurance FROM hdbms;
+
+CREATE USER admin@'localhost' IDENTIFIED BY 'test';  
+GRANT ALL ON patients TO admin@'localhost';  
