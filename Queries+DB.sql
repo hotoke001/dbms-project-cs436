@@ -63,31 +63,21 @@ insert into hospital(street, building,cid,city)
 values('main st', '5A',1,'Cranston'), 
 	('North st', '6B',2,'Providence'), 
 	('East st', '1C',3,'Warwick');
-	('Quinn ave', '6C',4,'Cranston');
-	('King st', '7C',5,'Kingstown');
-	('South st', '4C',6,'Greenwich');
 
 insert into patients(pname,gender, phonenumber, dob,adrID)
 values('Jack', 'M', '1234567890', '05/24/1974',1), 
        ('Queen', 'F', '12345670988', '04/07/1990',2), 
        ('Maria', 'F', '1234567900', '10/15/1988',3);
-       ('Bob', 'M', '123412345', '01/17/1988',4);
-       ('Sean', 'M', '987654321', '05/21/1988',5);
-       ('Jane', 'F', '6786789', '11/12/1988',6);
 
 insert into insurance(company,pID)
 values('United Healthcare',1),
 	('McKennon Corp',2), 
 	('CVS Health',3);
-	('CharterCare',4);
 
 insert into doctor(dname, gender, phonenumber, dateOfBirth,adrID,city)
 values('Ricky','M', '4016789342', '05/15/1969',1,'Warwick'), 
 	('Lebron', 'M','4017595783', '12/30/1984',2,'Providence'),
         ('Kyle', 'M','4016721930', '07/26/1995',3,'Cranston');
-	('Linda', 'F','4016721930', '10/22/1989',4,'Kingstown');
-	('Susie', 'F','4016721930', '07/10/1997',5,'Warwick');
-	('Lily', 'M','4016721930', '08/22/1994',6,'Providence');
 
 /*SQL Testing Commands*/
 
@@ -105,9 +95,6 @@ select * from patients;
 update patients set homeaddress = 'University Road' where pid = 1; 
 update patients set homeaddress = '13 Health Ave' where pid = 2;
 update patients set homeaddress = '81 Cranston St' where pid = 3;
-update patients set homeaddress = '123 Health St' where pid = 4;
-update patients set homeaddress = '8 Woodie St' where pid = 5;
-update patients set homeaddress = '201 Greenwich Ave' where pid = 6;
 select * from patients;
 
 Create View patientcheckup as /* creating view of relevant patient infomation*/
