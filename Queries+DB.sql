@@ -105,6 +105,9 @@ select * from patients;
 update patients set homeaddress = 'University Road' where pid = 1; 
 update patients set homeaddress = '13 Health Ave' where pid = 2;
 update patients set homeaddress = '81 Cranston St' where pid = 3;
+update patients set homeaddress = '123 Health St' where pid = 4;
+update patients set homeaddress = '8 Woodie St' where pid = 5;
+update patients set homeaddress = '201 Greenwich Ave' where pid = 6;
 select * from patients;
 
 Create View patientcheckup as /* creating view of relevant patient infomation*/
