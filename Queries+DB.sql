@@ -43,20 +43,16 @@ constraint pID foreign key(pID) references patients(pID)
 );
 
 create table if not exists doctor(
-dID int(10) unsigned default NULL,
+dID int(10) unsigned not NULL auto_increment,
 adrID int(10) unsigned not NULL,
 dname varchar(45) default NULL,
 city varchar(45) default null,
 gender varchar(45) default NULL,
 phonenumber varchar(45) default NULL,
 dateOfBirth varchar(45) default NULL,
-KEY adrID2 (adrID),
-PRIMARY KEY(adrID),
-CONSTRAINT adrID2 FOREIGN KEY (adrID) REFERENCES hospital (adrID) 
+PRIMARY KEY(dID)
 );
 
-ALTER TABLE doctor ADD CHECK (gender  = 'male' or 'female');
-select * from doctor;
 
 insert into cities(cname)
 values('Providence'),
@@ -78,10 +74,10 @@ values('United Healthcare',1),
 ('McKennon Corp',2), 
 ('CVS Health',3);
 
-insert into doctor(dID, dname, gender, phonenumber, dateOfBirth,adrID,city)
-values(1, 'Ricky Rubio','Male', '4016789342', '05/15/1969',1,'Warwick'), 
-	(2,'Lebron Howard', 'Male','4017595783', '12/30/1984',2,'Providence'),
-        (3, 'Kyle Kuzma', 'Male','4016721930', '07/26/1995',3,'Cranston');
+insert into doctor(dname, gender, phonenumber, dateOfBirth,adrID,city)
+values('Ricky Rubio','Male', '4016789342', '05/15/1969',1,'Warwick'), 
+	('Lebron Howard', 'Male','4017595783', '12/30/1984',2,'Providence'),
+        ('Kyle Kuzma', 'Male','4016721930', '07/26/1995',3,'Cranston');
 
 /*SQL Testing Commands*/
 
